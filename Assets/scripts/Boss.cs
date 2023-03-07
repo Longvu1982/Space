@@ -12,11 +12,13 @@ public class Boss : MonoBehaviour
     private int frameCount;
     private int randomIndex;
     public GameObject bullet;
+    public int health;
 
     // Start is called before the first frame update
     [System.Obsolete]
     void Start()
     {
+        health = 100;
         speed = 4f;
         frameCount = 0;
         randomIndex = Random.RandomRange(0, posList.Count);
@@ -48,6 +50,11 @@ public class Boss : MonoBehaviour
         if (collision.CompareTag("bullet"))
         {
             Debug.Log("hit");
+            health -= 10;
+            if(health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
     void RandomMove(Vector3 target)

@@ -16,4 +16,13 @@ public class PlayerBullet : bullet
     {
         this.Movement(this.gameObject, new Vector3(0, 1, 0), speed);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("boss"))
+        {
+            Debug.Log("hit");
+            Destroy(this.gameObject);
+        }
+    }
 }

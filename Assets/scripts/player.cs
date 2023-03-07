@@ -7,6 +7,7 @@ public class player : MonoBehaviour
     public float speed = 6f;
     public GameObject bullet;
     public Rigidbody rb;
+    public AudioSource shootSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
             CreateBullet();
+            shootSound.Play();
         }
 
     }
